@@ -27,5 +27,14 @@
     "packages": [
       "packages/*"
     ]
-  }
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.1",
+    "ethers": "^5.0.32",
+    "openzeppelin-test-helpers": "^0.5.1",
+    "web3": "^1.3.4"
+  },
+  "main": "index.js",
+  "author": "PatrickAlphaC <54278053+PatrickAlphaC@users.noreply.github.com>",
+  "license": "MIT"
 }
