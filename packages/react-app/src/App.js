@@ -1,15 +1,13 @@
 import React from "react"
 import { Contract } from "@ethersproject/contracts"
 import { getDefaultProvider } from "@ethersproject/providers"
-import { useQuery } from "@apollo/react-hooks"
 import { ethers } from "ethers"
+import Navbar from "./components/navbar/Navbar"
 
 import { Body, Button, Header, Image, Link } from "./components"
 import logo from "./pizzame.png"
-import useWeb3Modal from "./hooks/useWeb3Modal"
 
 import { addresses, abis } from "@project/contracts"
-import GET_TRANSFERS from "./graphql/subgraph"
 
 async function readOnChainData() {
   // Should replace with the end-user wallet, e.g. Metamask
@@ -30,41 +28,18 @@ async function orderPizza() {
   // console.log(abis.vrf_pizza)
   const vrf_pizza = new Contract(addresses.kovan_pizza_vrf, abis.vrf_pizza, provider)
   const pizzaPriceInMatic = await vrf_pizza.view_matic_pizza_price()
-  await vrf_pizza.connect(signer)
-  let seed_phrase = (Math.random()) * 1000000000000000000
-  await vrf_pizza.order_pizza(seed_phrase)
+  let contract_with_signer = await vrf_pizza.connect(signer)
+  let seed_phrase = Math.floor(Math.random() * 1000000)
+  console.log(seed_phrase)
+  // await contract_with_signer.order_pizza(seed_phrase)
 }
 
-function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
-  return (
-    <Button
-      onClick={() => {
-        if (!provider) {
-          loadWeb3Modal()
-        } else {
-          logoutOfWeb3Modal()
-        }
-      }}
-    >
-      {!provider ? "Connect Wallet" : "Disconnect Wallet"}
-    </Button>
-  )
-}
 
 function App() {
-  const { loading, error, data } = useQuery(GET_TRANSFERS)
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal()
-
-  React.useEffect(() => {
-    if (!loading && !error && data && data.transfers) {
-      console.log({ transfers: data.transfers })
-    }
-  }, [loading, error, data])
-
   return (
     <div>
+      <Navbar></Navbar>
       <Header>
-        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
         <center>
@@ -74,8 +49,7 @@ function App() {
           Please don't order anything outside of 11AM EDT - 10PM EDT. It won't work if you do that.
           Please swap to the *Polygon Mainnet*.
           <br></br>
-            <
-              Button onClick={() => orderPizza()}>
+            <Button onClick={() => orderPizza()}>
               Order Patrick a Random Pizza
         </Button>
           </p>

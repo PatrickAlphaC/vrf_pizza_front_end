@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Header = styled.header`
   background-color: #282c34;
@@ -8,7 +8,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: flex-end;
   color: white;
-`;
+`
 
 export const Body = styled.body`
   align-items: center;
@@ -19,13 +19,13 @@ export const Body = styled.body`
   font-size: calc(10px + 2vmin);
   justify-content: center;
   min-height: calc(100vh - 70px);
-`;
+`
 
 export const Image = styled.img`
   height: 40vmin;
   margin-bottom: 16px;
   pointer-events: none;
-`;
+`
 
 export const Link = styled.a.attrs({
   target: "_blank",
@@ -33,7 +33,7 @@ export const Link = styled.a.attrs({
 })`
   color: #61dafb;
   margin-top: 10px;
-`;
+`
 
 export const Button = styled.button`
   background-color: white;
@@ -51,4 +51,4 @@ export const Button = styled.button`
     border: none;
     outline: none;
   }
-`;
+`
