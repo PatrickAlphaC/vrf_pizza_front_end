@@ -38,6 +38,9 @@ function App() {
             <br></br>
           2. Please swap to the *Polygon Mainnet*.
           <br></br>
+            <br></br>
+          3. You need at least $55 in MATIC in your wallet to cover the cost of a crazy pizza.
+          <br></br>
           </p>
           <Button onClick={() => orderPizza()}>
             Order Patrick a Random Pizza
@@ -51,6 +54,9 @@ function App() {
           </center>
           <p className="smaller">
             VRF Pizza is an app that allows you to buy Patrick a verifiably random pizza on the Polygon chain, using <a href="https://docs.chain.link/docs/get-a-random-number">Chainlink VRF</a> to get the RNG, <a href="https://docs.chain.link/docs/get-the-latest-price">Chainlink Data Feeds</a> to get the Matic->USD->Pizza price, and <a href="https://docs.chain.link/docs/make-a-http-get-request">Chainlink API Calls</a> and <a href="https://docs.chain.link/docs/contract-creators">external adapters</a> to have Dominos deliver. If you need some Polygon (Matic) token, you can swap it with their <a href="https://wallet.matic.network/bridge">bridge</a>. The cost is associated to being the max cost of an insanly disgusting pizza, which is about $55 in MATIC. If a lot of people do this, I'll probably do a reverse NFT airdrop or something. But this is really just for fun.
+          </p>
+          <p className="smaller">
+            Not audited.
           </p>
         </div>
       </Body>
