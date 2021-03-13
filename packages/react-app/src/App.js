@@ -39,7 +39,7 @@ function App() {
           2. Please swap to the *Polygon Mainnet*.
           <br></br>
             <br></br>
-          3. You need at least $55 in MATIC in your wallet to cover the cost of a crazy pizza.
+          3. It's not broken, you need at least $55 in MATIC in your wallet to cover the cost of a crazy pizza and for it to work.
           <br></br>
           </p>
           <Button onClick={() => orderPizza()}>
