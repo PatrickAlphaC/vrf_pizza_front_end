@@ -6,8 +6,13 @@
     rgb(161, 151, 252) 0%,
     rgb(35, 25, 237) 100%
   );
+  margin-top: 20px;
   justify-content: center;
   max-width: 500px;
   border-radius: 8px;
   padding: 20px;
+}
+
+.smaller {
+  font-size: small;
 }

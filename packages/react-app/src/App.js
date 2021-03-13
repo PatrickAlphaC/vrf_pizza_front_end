@@ -13,9 +13,9 @@ async function orderPizza() {
   const provider = new ethers.providers.Web3Provider(window.ethereum)
   const signer = provider.getSigner()
   // Should replace with the end-user wallet, e.g. Metamask
-  console.log(addresses.kovan_pizza_vrf)
+  console.log(addresses.mainnet_pizza_vrf)
   // console.log(abis.vrf_pizza)
-  const vrf_pizza = new Contract(addresses.kovan_pizza_vrf, abis.vrf_pizza, provider)
+  const vrf_pizza = new Contract(addresses.mainnet_pizza_vrf, abis.vrf_pizza, provider)
   const pizzaPriceInMatic = await vrf_pizza.view_matic_pizza_price()
   console.log(pizzaPriceInMatic)
   let contract_with_signer = await vrf_pizza.connect(signer)
@@ -49,6 +49,9 @@ function App() {
           <center>
             <Link href="https://chain.link/hackathon">Join the Chainlink Hackathon</Link>
           </center>
+          <p className="smaller">
+            VRF Pizza is an app that allows you to buy Patrick a verifiably random pizza on the Polygon chain, using <a href="https://docs.chain.link/docs/get-a-random-number">Chainlink VRF</a> to get the RNG, <a href="https://docs.chain.link/docs/get-the-latest-price">Chainlink Data Feeds</a> to get the Matic->USD->Pizza price, and <a href="https://docs.chain.link/docs/make-a-http-get-request">Chainlink API Calls</a> and <a href="https://docs.chain.link/docs/contract-creators">external adapters</a> to have Dominos deliver. If you need some Polygon (Matic) token, you can swap it with their <a href="https://wallet.matic.network/bridge">bridge</a>. The cost is associated to being the max cost of an insanly disgusting pizza. If a lot of people do this, I'll probably do a reverse NFT airdrop or something. But this is really just for fun.
+          </p>
         </div>
       </Body>
     </div >
