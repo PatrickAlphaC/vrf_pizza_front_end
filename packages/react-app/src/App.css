@@ -1,7 +1,13 @@
-* {
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+.main-box {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    rgb(161, 151, 252) 0%,
+    rgb(35, 25, 237) 100%
+  );
+  justify-content: center;
+  max-width: 500px;
+  border-radius: 8px;
+  padding: 20px;
 }

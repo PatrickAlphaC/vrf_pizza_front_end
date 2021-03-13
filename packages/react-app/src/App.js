@@ -3,7 +3,7 @@ import { Contract } from "@ethersproject/contracts"
 import { getDefaultProvider } from "@ethersproject/providers"
 import { ethers } from "ethers"
 import Navbar from "./components/navbar/Navbar"
-
+import "./App.css"
 import { Body, Button, Header, Image, Link } from "./components"
 import logo from "./pizzame.png"
 
@@ -28,10 +28,11 @@ async function orderPizza() {
   // console.log(abis.vrf_pizza)
   const vrf_pizza = new Contract(addresses.kovan_pizza_vrf, abis.vrf_pizza, provider)
   const pizzaPriceInMatic = await vrf_pizza.view_matic_pizza_price()
+  console.log(pizzaPriceInMatic)
   let contract_with_signer = await vrf_pizza.connect(signer)
   let seed_phrase = Math.floor(Math.random() * 1000000)
   console.log(seed_phrase)
-  // await contract_with_signer.order_pizza(seed_phrase)
+  await contract_with_signer.order_pizza(seed_phrase, { 'value': pizzaPriceInMatic + 1 })
 }
 
 
@@ -39,27 +40,27 @@ function App() {
   return (
     <div>
       <Navbar></Navbar>
-      <Header>
-      </Header>
       <Body>
-        <center>
-          <p>
-            This was created in about 20 minutes
+        <div className="main-box">
+          <p >
+            <br></br>
+          1. Please don't order anything outside of 11AM EDT - 10PM EDT. It won't work if you do that.
           <br></br>
-          Please don't order anything outside of 11AM EDT - 10PM EDT. It won't work if you do that.
-          Please swap to the *Polygon Mainnet*.
+            <br></br>
+          2. Please swap to the *Polygon Mainnet*.
           <br></br>
-            <Button onClick={() => orderPizza()}>
-              Order Patrick a Random Pizza
-        </Button>
           </p>
-        </center>
-        <Image src={logo} alt="react-logo" />
-        {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
-        <Button hidden onClick={() => readOnChainData()}>
-          Read On-Chain Balance
-        </Button>
-        <Link href="https://chain.link/hackathon">Join the Chainlink Hackathon</Link>
+          <Button onClick={() => orderPizza()}>
+            Order Patrick a Random Pizza
+            </Button>
+          <center>
+            <Image src={logo} alt="react-logo" />
+          </center>
+          {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
+          <center>
+            <Link href="https://chain.link/hackathon">Join the Chainlink Hackathon</Link>
+          </center>
+        </div>
       </Body>
     </div >
   )
